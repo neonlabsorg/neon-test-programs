@@ -25,4 +25,4 @@ cover
 htmlcov
 dist
 build
-proxy_program/target
+target
