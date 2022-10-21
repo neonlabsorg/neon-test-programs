@@ -14,6 +14,6 @@ FROM ubuntu:20.04
 
 WORKDIR /opt
 
-COPY --from=builder /opt/test_invoke_neon-keypair.json /opt
-COPY --from=builder /opt/target/deploy/test_invoke_neon.so /opt
-COPY --from=builder /opt/deploy-test_invoke_neon.sh /opt
+COPY --from=builder /opt/neon-test-invoke-program-keypair.json /opt
+COPY --from=builder /opt/target/deploy/neon-test-invoke-program.so /opt
+COPY --from=builder /opt/neon-test-invoke-program.sh /opt
