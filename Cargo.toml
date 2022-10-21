@@ -1,5 +1,5 @@
 [package]
-name = "test_invoke_neon"
+name = "neon-test-invoke-program"
 version = "0.10.0-dev"
 description = "Neon EVM loader"
 authors = ["NeonLabs Maintainers <maintainers@neonlabs.org>"]
