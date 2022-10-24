@@ -19,4 +19,4 @@ COPY --from=builder /opt/target/deploy/neon_test_invoke_program.so /opt
 COPY --from=builder /opt/neon-test-invoke-program.sh /opt
 COPY --from=builder /root/.local/share/solana/install/active_release/bin/solana /opt/solana/bin
 
-ENV PATH /opt/solana/bin
+ENV PATH=/opt/solana/bin
