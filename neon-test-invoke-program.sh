@@ -8,7 +8,7 @@ fi
 SOLANA_BIN=/opt/solana/bin
 
 ${SOLANA_BIN}/solana config set -u "$SOLANA_URL"
-${SOLANA_BIN}/solana-keygen new --no-passphrase
+${SOLANA_BIN}/solana-keygen new --no-passphrase -o /root/.config/solana/id.json
 ${SOLANA_BIN}/solana airdrop 1
 
 export TEST_PROGRAM=$(${SOLANA_BIN}/solana address -k /opt/proxy_program-keypair.json)
