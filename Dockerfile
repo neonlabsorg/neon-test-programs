@@ -10,16 +10,16 @@ RUN rustup update
 COPY . /opt
 
 WORKDIR /opt
-RUN cd ./test-invoke-program && cargo build-bpf --bpf-out-dir=/opt/deploy/test-invoke-program
+RUN cd ./test-invoke-program && cargo build-bpf --bpf-out-dir=/opt/deploy/test_invoke_program/
 
-RUN cd counter && cargo build-bpf --bpf-out-dir=/opt/deploy/counter
-RUN cd transfer-sol/program && cargo build-bpf  --bpf-out-dir=/opt/deploy/transfer-sol
-RUN cd cross-program-invocation && cargo build-bpf --bpf-out-dir=/opt/deploy/cross-program-invocation
+RUN cd counter && cargo build-bpf --bpf-out-dir=/opt/deploy/counter/
+RUN cd transfer-sol/program && cargo build-bpf  --bpf-out-dir=/opt/deploy/transfer_sol/
+RUN cd cross-program-invocation && cargo build-bpf --bpf-out-dir=/opt/deploy/cross_program_invocation/
 
 
 FROM ubuntu:20.04
 
-COPY --from=builder /opt/test-invoke-program/neon-test-invoke-program.sh /opt/deploy/
+COPY --from=builder /opt/test-invoke-program/neon-test-invoke-program.sh /opt/deploy/test_invoke_program/
 COPY --from=builder /root/.local/share/solana/install/active_release/bin/solana /opt/solana/bin/
 COPY --from=builder /root/.local/share/solana/install/active_release/bin/solana-keygen /opt/solana/bin/
 COPY --from=builder /opt/deploy /opt/deploy

@@ -1,6 +1,6 @@
 [package]
 rust-version = "1.72"
-name = "neon-test-invoke-program"
+name = "test-invoke-program"
 version = "0.10.0-dev"
 description = "Neon EVM loader"
 authors = ["NeonLabs Maintainers <maintainers@neonlabs.org>"]

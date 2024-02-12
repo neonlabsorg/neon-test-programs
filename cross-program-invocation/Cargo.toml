@@ -1,5 +1,5 @@
 [package]
-name = "spl-example-cross-program-invocation"
+name = "cross-program-invocation"
 version = "1.0.0"
 description = "Solana Program Library Cross Program Invocation Example"
 authors = ["Solana Labs Maintainers <maintainers@solanalabs.com>"]

@@ -1,5 +1,5 @@
 [package]
-name = "transfer-sol-program"
+name = "transfer-sol"
 version = "0.1.0"
 edition = "2021"
 
