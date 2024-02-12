@@ -26,5 +26,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: neonlabsorg/neon_test_invoke_program:${{ github.ref_name }}
-          labels: neonlabsorg/neon_test_invoke_program:${{ github.ref_name }}
+          tags: neonlabsorg/neon_test_programs:${{ github.ref_name }}
+          labels: neonlabsorg/neon_test_programs:${{ github.ref_name }}
