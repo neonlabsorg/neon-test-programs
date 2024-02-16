@@ -1,5 +1,6 @@
 [package]
-name = "neon-test-invoke-program"
+rust-version = "1.72"
+name = "test-invoke-program"
 version = "0.10.0-dev"
 description = "Neon EVM loader"
 authors = ["NeonLabs Maintainers <maintainers@neonlabs.org>"]
@@ -17,11 +18,11 @@ test-bpf = []
 custom-heap = []
 
 [dependencies]
-solana-program = "=1.10.30"
+solana-program = ">=1.17.17,<=2"
 
 [dev-dependencies]
-solana-program-test = "=1.10.30"
-solana-sdk = "=1.10.30"
+solana-program-test = ">=1.17.17,<=2"
+solana-sdk = ">=1.17.17,<=2"
 
 [lib]
 crate-type = ["cdylib", "lib"]
