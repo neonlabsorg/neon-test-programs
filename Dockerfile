@@ -1,4 +1,4 @@
-FROM solanalabs/rust:1.75.0 AS builder
+FROM solanalabs/rust:1.73.0 AS builder
 RUN rustup toolchain install nightly
 RUN rustup component add clippy --toolchain nightly
 WORKDIR /opt
@@ -15,6 +15,7 @@ RUN cd ./test-invoke-program && cargo build-bpf --bpf-out-dir=/opt/deploy/test_i
 RUN cd counter && cargo build-bpf --bpf-out-dir=/opt/deploy/counter/
 RUN cd transfer-sol/program && cargo build-bpf  --bpf-out-dir=/opt/deploy/transfer_sol/
 RUN cd cross-program-invocation && cargo build-bpf --bpf-out-dir=/opt/deploy/cross_program_invocation/
+RUN cd transfer-tokens && cargo build-bpf --bpf-out-dir=/opt/deploy/transfer_tokens/
 
 
 FROM ubuntu:20.04
