@@ -16,7 +16,9 @@ RUN cd counter && cargo build-bpf --bpf-out-dir=/opt/deploy/counter/
 RUN cd transfer-sol/program && cargo build-bpf  --bpf-out-dir=/opt/deploy/transfer_sol/
 RUN cd cross-program-invocation && cargo build-bpf --bpf-out-dir=/opt/deploy/cross_program_invocation/
 RUN cd transfer-tokens && cargo build-bpf --bpf-out-dir=/opt/deploy/transfer_tokens/
-
+COPY counter/counter-keypair.json /opt/deploy/counter/
+COPY transfer-sol/transfer_sol-keypair.json /opt/deploy/transfer_sol/
+COPY transfer-tokens/transfer_tokens-keypair.json /opt/deploy/transfer_tokens/
 
 FROM ubuntu:20.04
 
