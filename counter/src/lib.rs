@@ -6,6 +6,7 @@ use solana_program::{
     msg,
     program_error::ProgramError,
     pubkey::Pubkey,
+    program::set_return_data
 };
 
 mod state;
@@ -31,7 +32,7 @@ pub fn process_instruction(
             process_increment_counter(accounts, instruction_data_inner)?;
         }
         _ => {
-            msg!("Error: unknown instruction {}", instruction_discriminant[0])
+            msg!("Error: unknown instruction {}", instruction_discriminant[0]);
 
         }
     }
@@ -53,7 +54,7 @@ pub fn process_increment_counter(
     let mut counter = Counter::try_from_slice(&counter_account.try_borrow_mut_data()?)?;
     counter.count += 1;
     counter.serialize(&mut *counter_account.data.borrow_mut())?;
-
+    set_return_data(&counter.count.to_le_bytes());
     msg!("Counter state incremented to {:?}", counter.count);
     Ok(())
 }
