@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "develop" ]
 env:
-  DOCKERHUB_ORG_NAME: ${{ vars.DOCKERHUB_ORG_NAME }}
+  DOCKERHUB_ORG_NAME: ${{ vars.DOCKER_HUB_ORG_NAME }}
 
 jobs:
 
