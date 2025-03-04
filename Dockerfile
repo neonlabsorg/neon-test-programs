@@ -1,13 +1,14 @@
-FROM solanalabs/rust:1.75.0 AS builder
-RUN rustup toolchain install 1.75.0
-RUN rustup component add clippy --toolchain 1.75.0
+FROM anzaxyz/ci:rust_1.78.0_nightly-2024-03-26 AS builder
+RUN cargo install rustfilt
+#RUN rustup component add clippy --toolchain 1.79.0
 WORKDIR /opt
 
-RUN sh -c "$(curl -sSfL https://release.solana.com/v1.18.18/install)" && \
+RUN sh -c "$(curl -sSfL https://release.anza.xyz/v2.0.15/install)" && \
     /root/.local/share/solana/install/active_release/bin/sdk/sbf/scripts/install.sh
-ENV PATH=/root/.local/share/solana/install/active_release/bin:/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-RUN solana-install init 1.18.14
-RUN rustup update
+ENV PATH=${PATH}:/root/.local/share/solana/install/active_release/bin
+# RUN solana-install init v2.0.15
+# RUN rustup update
+FROM builder AS evm-loader-builder
 
 COPY . /opt
 
