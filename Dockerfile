@@ -7,11 +7,12 @@ RUN sh -c "$(curl -sSfL https://release.solana.com/v1.18.18/install)" && \
     /root/.local/share/solana/install/active_release/bin/sdk/sbf/scripts/install.sh
 ENV PATH=/root/.local/share/solana/install/active_release/bin:/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 RUN solana-install init 1.18.14
-RUN rustup update
 
 COPY . /opt
 
 WORKDIR /opt
+RUN cd ./test-invoke-program/ && cargo update -p solana-program --precise 2.0.21
+
 RUN cd ./test-invoke-program && cargo build-bpf --bpf-out-dir=/opt/deploy/test_invoke_program/
 
 RUN cd counter && cargo build-bpf --bpf-out-dir=/opt/deploy/counter/
