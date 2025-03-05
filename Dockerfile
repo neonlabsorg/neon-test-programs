@@ -1,17 +1,18 @@
-FROM anzaxyz/ci:rust_1.78.0_nightly-2024-03-26 AS builder
-RUN cargo install rustfilt
-#RUN rustup component add clippy --toolchain 1.79.0
+FROM solanalabs/rust:1.75.0 AS builder
+RUN rustup toolchain install 1.75.0
+RUN rustup component add clippy --toolchain 1.75.0
 WORKDIR /opt
 
-RUN sh -c "$(curl -sSfL https://release.anza.xyz/v2.0.15/install)" && \
+RUN sh -c "$(curl -sSfL https://release.solana.com/v1.18.18/install)" && \
     /root/.local/share/solana/install/active_release/bin/sdk/sbf/scripts/install.sh
-ENV PATH=${PATH}:/root/.local/share/solana/install/active_release/bin
-# RUN solana-install init v2.0.15
-# RUN rustup update
+ENV PATH=/root/.local/share/solana/install/active_release/bin:/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN solana-install init 1.18.14
 
 COPY . /opt
 
 WORKDIR /opt
+RUN cd ./test-invoke-program/ && cargo update -p solana-program --precise 2.0.21
+
 RUN cd ./test-invoke-program && cargo build-bpf --bpf-out-dir=/opt/deploy/test_invoke_program/
 
 RUN cd counter && cargo build-bpf --bpf-out-dir=/opt/deploy/counter/
