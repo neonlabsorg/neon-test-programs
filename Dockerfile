@@ -8,7 +8,6 @@ RUN sh -c "$(curl -sSfL https://release.anza.xyz/v2.0.15/install)" && \
 ENV PATH=${PATH}:/root/.local/share/solana/install/active_release/bin
 # RUN solana-install init v2.0.15
 # RUN rustup update
-FROM builder AS evm-loader-builder
 
 COPY . /opt
 
