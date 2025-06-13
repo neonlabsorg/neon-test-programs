@@ -3,9 +3,9 @@ RUN rustup toolchain install 1.75.0
 RUN rustup component add clippy --toolchain 1.75.0
 WORKDIR /opt
 
-RUN sh -c "$(curl -sSfL https://release.solana.com/v1.18.18/install)" && \
-    /root/.local/share/solana/install/active_release/bin/sdk/sbf/scripts/install.sh
-ENV PATH=/root/.local/share/solana/install/active_release/bin:/usr/local/cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN sh -c "$(curl -sSfL https://release.anza.xyz/v1.18.18/install)"
+ENV PATH=/root/.local/share/solana/install/active_release/bin:$PATH
+
 RUN solana-install init 1.18.14
 
 COPY . /opt
