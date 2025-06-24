@@ -20,6 +20,7 @@ RUN cd transfer-tokens && cargo build-bpf --bpf-out-dir=/opt/deploy/transfer_tok
 COPY counter/counter-keypair.json /opt/deploy/counter/
 COPY transfer-sol/transfer_sol-keypair.json /opt/deploy/transfer_sol/
 COPY transfer-tokens/transfer_tokens-keypair.json /opt/deploy/transfer_tokens/
+COPY test-invoke-program/neon_test_invoke_program-keypair.json /opt/deploy/test_invoke_program/test_invoke_program-keypair.json
 
 FROM ubuntu:20.04
 
